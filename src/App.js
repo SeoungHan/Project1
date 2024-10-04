@@ -1,12 +1,13 @@
 import React, { useReducer, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import SeriesList from "./components/SeriesList";
+
 import AddSeries from "./components/AddSeries";
 
 import PostList from "./components/PostLIst";
 import PostDetail from "./components/PostDetail";
 import PostForm from "./components/PostForm";
-import axios from "axios";
+// import axioss from "axios";
+
 
 // const initialState = {
 //   posts: [],
@@ -18,12 +19,14 @@ const initialState = {
       content: "This is the first post",
       likes: 5,
       comments: [],
+      image: null, // New property for the image
     },
     {
       id: 2,
       content: "This is the second post",
       likes: 10,
       comments: [],
+      image: null, // New property for the image
     },
   ],
 };
@@ -169,6 +172,7 @@ const App = () => {
                 </>
               }
             /> */}
+    
             <Route
               path="/"
               element={
@@ -185,7 +189,7 @@ const App = () => {
                   <div
                     style={{
                       width: "60%",
-                      height: "810px",
+                      height: "1000px",
                       display: "flex",
                       justifyContent: "center",
                       position: "absolute",
@@ -196,20 +200,8 @@ const App = () => {
                       boxSizing: "border-box",
                     }}
                   >
-                    {" "}
-                    {/* <div>
-                      <div>
-                        <button onClick={onClick}>불러오기</button>
-                      </div>
                     
-                      {data && (
-                        <textarea
-                          rows={7}
-                          value={JSON.stringify(data, null, 2)}
-                          readOnly={true}
-                        />
-                      )}
-                    </div> */}
+                   
                     <div
                       style={{
                         width: "100%",
@@ -217,26 +209,7 @@ const App = () => {
                     />
                   </div>
 
-                  <div
-                    style={{
-                      width: "60%",
-                      display: "flex",
-                      alignItems: "center",
-                      position: "absolute",
-                      top: "820px",
-                      left: "0",
-                      border: "1px solid  #ccc",
-                      paddingBottom: "10px",
-                      boxSizing: "border-box",
-                    }}
-                  >
-                    <SeriesList
-                      style={{
-                        width: "100%",
-                        //  textDecoration: "none",
-                      }}
-                    />
-                  </div>
+                
                   <div
                     style={{
                       width: "40%",
