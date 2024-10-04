@@ -1,13 +1,9 @@
 import React, { useReducer, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
+import SeriesList from "./components/SeriesList";
 import AddSeries from "./components/AddSeries";
-
-import PostList from "./components/PostLIst";
-import PostDetail from "./components/PostDetail";
-import PostForm from "./components/PostForm";
-// import axioss from "axios";
-
+import axios from "axios";
+import Home from "./components/Home";
 
 // const initialState = {
 //   posts: [],
@@ -15,18 +11,10 @@ import PostForm from "./components/PostForm";
 const initialState = {
   posts: [
     {
-      id: 1,
-      content: "This is the first post",
-      likes: 5,
-      comments: [],
-      image: null, // New property for the image
+      id: 1, content: "This is the first post", likes: 5, comments: [],
     },
     {
-      id: 2,
-      content: "This is the second post",
-      likes: 10,
-      comments: [],
-      image: null, // New property for the image
+      id: 2, content: "This is the second post", likes: 10, comments: [],
     },
   ],
 };
@@ -64,11 +52,11 @@ function postReducer(state, action) {
         posts: state.posts.map((post) =>
           post.id === action.payload.postId
             ? {
-                ...post,
-                comments: post.comments.filter(
-                  (comment) => comment.id !== action.payload.commentId
-                ),
-              }
+              ...post,
+              comments: post.comments.filter(
+                (comment) => comment.id !== action.payload.commentId
+              ),
+            }
             : post
         ),
       };
@@ -117,30 +105,14 @@ const App = () => {
         <div className="App">
           <nav
             style={{
-              width: "100%",
-              height: "30px",
-              display: "flex",
-              justifyContent: "center",
-              gap: "20px",
-              padding: "10px",
-              backgroundColor: "#f8f9fa",
-              position: "relative",
+              width: "100%", height: "30px", display: "flex", justifyContent: "center", gap: "20px", padding: "10px", backgroundColor: "#f8f9fa", position: "relative",
             }}
           >
             <Link
               to="/"
               style={{
-                textDecoration: "none",
-                color: "#007bff",
-                fontSize: "20px",
-                fontWeight: "bold",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "60px",
-                position: "absolute",
-
-                left: "27%",
+                textDecoration: "none", color: "#007bff", fontSize: "20px", fontWeight: "bold", display: "flex", alignItems: "center", justifyContent: "center", width: "60px",
+                position: "absolute", left: "27%",
               }}
             >
               Home
@@ -148,14 +120,7 @@ const App = () => {
             <Link
               to="/new"
               style={{
-                textDecoration: "none",
-                color: "#f05264",
-                fontSize: "20px",
-                fontWeight: "bold",
-                width: "120px",
-                position: "absolute",
-
-                right: "17%",
+                textDecoration: "none", color: "#f05264", fontSize: "20px", fontWeight: "bold", width: "120px", position: "absolute", right: "17%",
               }}
             >
               New Post
@@ -163,81 +128,24 @@ const App = () => {
           </nav>
 
           <Routes>
-            {/* <Route
-              path="/"
-              element={
-                <>
-                  <SeriesList />
-                  <PostList />
-                </>
-              }
-            /> */}
-    
+            {/* <Route path="/" element={<><SeriesList /><PostList /> </>  }/> */}
             <Route
               path="/"
               element={
                 <div
-                  style={{
-                    width: "100%",
-                    display: "flex",
-
-                    position: "relative",
-                    // border: '1px solid blue'
-                    // margin: "0 auto",
-                  }}
+                  style={{ width: "100%", display: "flex", position: "relative" }}
                 >
                   <div
                     style={{
-                      width: "60%",
-                      height: "1000px",
-                      display: "flex",
-                      justifyContent: "center",
-                      position: "absolute",
-                      top: "0",
-                      left: "0",
-                      border: "1px solid  #ccc",
-                      paddingBottom: "10px",
-                      boxSizing: "border-box",
+                      width: "60%", height: "810px", display: "flex", justifyContent: "center", position: "absolute", top: "0", left: "0", border: "1px solid  #ccc", paddingBottom: "10px", boxSizing: "border-box",
                     }}
                   >
-                    
-                   
-                    <div
-                      style={{
-                        width: "100%",
-                      }}
-                    />
-                  </div>
-
-                
-                  <div
-                    style={{
-                      width: "40%",
-                      height: "1001px",
-                      border: "1px solid  #ccc",
-                      // paddingBottom: "10px",
-                      boxSizing: "border-box",
-                      position: "absolute",
-                      top: "0",
-                      right: "0",
-                    }}
-                  >
-                    <PostList
-                      style={{
-                        width: "100%",
-                        height: "1001px",
-                        margin: "0 auto",
-                      }}
-                    />
+                    <Home />
+                    <div style={{ width: "100%", }} />
                   </div>
                 </div>
               }
             />
-
-            <Route path="/add-series" element={<AddSeries />} />
-
-            <Route path="/new" element={<PostForm />} />
-            <Route path="/post/:id" element={<PostDetail />} />
           </Routes>
         </div>
       </Router>
