@@ -177,15 +177,7 @@ const App = () => {
           </nav>
 
           <Routes>
-            {/* <Route
-              path="/"
-              element={
-                <>
-                  <SeriesList />
-                  <PostList />
-                </>
-              }
-            /> */}
+       
             <Route
               path="/"
               element={
@@ -220,26 +212,7 @@ const App = () => {
                     />
                   </div>
 
-                  <div
-                    style={{
-                      width: "60%",
-                      display: "flex",
-                      alignItems: "center",
-                      position: "absolute",
-                      top: "820px",
-                      left: "0",
-                      border: "1px solid  #ccc",
-                      paddingBottom: "10px",
-                      boxSizing: 'border-box'
-                    }}
-                  >
-                    <SeriesList
-                      style={{
-                        width: "100%",
-                        //  textDecoration: "none",
-                      }}
-                    />
-                  </div>
+                  
                   <div
                     style={{
                       width: "40%",
