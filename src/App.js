@@ -4,6 +4,10 @@ import SeriesList from "./components/SeriesList";
 import AddSeries from "./components/AddSeries";
 import axios from "axios";
 import Home from "./components/Home";
+import MovieList from "./components/MovieList";
+import PostList from "./components/PostList";
+import PostForm from "./components/PostForm";
+import PostDetail from "./components/PostDetail";
 
 // const initialState = {
 //   posts: [],
@@ -108,23 +112,25 @@ const App = () => {
               width: "100%", height: "30px", display: "flex", justifyContent: "center", gap: "20px", padding: "10px", backgroundColor: "#f8f9fa", position: "relative",
             }}
           >
-            <Link
-              to="/"
-              style={{
-                textDecoration: "none", color: "#007bff", fontSize: "20px", fontWeight: "bold", display: "flex", alignItems: "center", justifyContent: "center", width: "60px",
-                position: "absolute", left: "27%",
-              }}
-            >
-              Home
-            </Link>
-            <Link
-              to="/new"
-              style={{
-                textDecoration: "none", color: "#f05264", fontSize: "20px", fontWeight: "bold", width: "120px", position: "absolute", right: "17%",
-              }}
-            >
-              New Post
-            </Link>
+            <div style={{ display: "flex", gap: "20px" }}>
+              <Link
+                to="/"
+                style={{
+                  textDecoration: "none", color: "#007bff", fontSize: "20px", fontWeight: "bold", display: "flex", alignItems: "center", justifyContent: "center", width: "60px",
+                  position: "absolute", left: "27%",
+                }}
+              >
+                Home
+              </Link>
+              <Link
+                to="/new"
+                style={{
+                  textDecoration: "none", color: "#f05264", fontSize: "20px", fontWeight: "bold", width: "120px", position: "absolute", right: "17%",
+                }}
+              >
+                New Post
+              </Link>
+            </div>
           </nav>
 
           <Routes>
@@ -141,11 +147,34 @@ const App = () => {
                     }}
                   >
                     <Home />
-                    <div style={{ width: "100%", }} />
+                  </div>
+                  <div
+                    style={{
+                      width: "40%",
+                      height: "1001px",
+                      border: "1px solid  #ccc",
+                      // paddingBottom: "10px",
+                      boxSizing: 'border-box',
+                      position: "absolute",
+                      top: "0",
+                      right: "0",
+                    }}
+                  >
+                    <PostList
+                      style={{
+                        width: "100%",
+                        height: "1001px",
+                        margin: "0 auto",
+                      }}
+                    />
                   </div>
                 </div>
               }
             />
+            <Route path="/add-series" element={<AddSeries />} />
+
+            <Route path="/new" element={<PostForm />} />
+            <Route path="/post/:id" element={<PostDetail />} />
           </Routes>
         </div>
       </Router>
