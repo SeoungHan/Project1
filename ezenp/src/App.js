@@ -114,16 +114,6 @@ const App = () => {
 
 
 
-//   <template>
-// <ag-grid
-//   :column-defs="state.columnDefs"
-//   :row-data="state.rowData"
-//    @grid-ready="onReady"        
-// />
-// </template> 
-// const onReady = (params) => {
-//   	params.api.sizeColumnsToFit()
-//  }  
 
   return (
     <PostContext.Provider value={{ state, dispatch }}>
